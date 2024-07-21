@@ -73,3 +73,18 @@ password:123
 unregistered user, terminating the program..
 
 """
+
+registred_users = {
+    "bob": "123",
+    "ann": "pass123",
+    "mike": "password123",
+    "Liz": "pass123"
+}
+
+username = input("Username: ")
+password = input("Password: ")
+
+if username in registred_users and registred_users[username] == password:
+    print("ok")
+else:
+    print("not ok")
