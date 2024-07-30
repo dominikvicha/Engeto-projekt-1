@@ -80,7 +80,7 @@ registred_users = {
     "mike": "password123",
     "Liz": "pass123"
 }
-
+"""
 username = input("Username: ")
 password = input("Password: ")
 
@@ -88,3 +88,63 @@ if username in registred_users and registred_users[username] == password:
     print("ok")
 else:
     print("not ok")
+
+"""
+
+"""
+def check_registration_user(username):
+
+    username = input("Username: ")
+    
+    if username in registred_users:
+            print("ok")
+    else:
+        print("sorry")
+    return(username)
+
+check_registration_user(registred_users)
+
+"""
+#print(dir(dict))
+#print(help(dict.values))
+#print(dict.values(registred_users))
+
+"""
+def check_registration_password(password):
+     
+    password = input("Password: ")
+
+    if password in dict.values(registred_users):
+        
+        print("ok")
+    else:
+        print("not ok")
+    return(password)
+
+check_registration_password(registred_users)
+
+"""
+#ošetřit když je dobre jmeno ale ne heslo 
+
+
+def check_registration(username, password):
+
+    username = input("Enter a username:")
+    password = input("Enter a password:")
+
+    if username in registred_users and password in dict.values(registred_users):
+        print("Welcome in the app,", username)
+    else:
+        print("Unregistered user, terminating the program..")
+    
+    return(username, password)
+check_registration(registred_users, dict.values(registred_users))
+
+    
+
+
+
+
+
+
+
