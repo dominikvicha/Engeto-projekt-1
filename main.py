@@ -200,8 +200,10 @@ while question_number:
 """
 
 for index, paragraph in enumerate(TEXTS, start=1):
-    print(f"{index}:")
-    print(paragraph)
+    print(f"{index}:" , paragraph)
+    print("\n-\n")
+    
+    
     
    
 
