@@ -192,7 +192,7 @@ def user_choose_paragraph(TEXTS):
         print(f"{index}:" , paragraph)
         print("\n-\n")
 
-    question_number = True
+    question_number = True          # user_choice je urcite lepsi... 
     while question_number:
         text_number = input("Enter a number btw. 1 and 3 to select:")
 
