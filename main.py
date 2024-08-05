@@ -186,24 +186,54 @@ except ValueError:
 
 """
 # MOŽNOST ŘEŠENÍ 5. -> 2. ŘEŠENÍ 
-"""
-question_number = True
-while question_number:
-    text_number = input("Enter a number btw. 1 and 3 to select:")
 
-    if text_number.isnumeric() and int(text_number) in range(1,4):
-        print("----------------------------------------")
-        break
-    else:
-        print("Warning you selected wrong number.") 
-        break
+def user_choose_paragraph(TEXTS):
+    for index, paragraph in enumerate(TEXTS, start=1):
+        print(f"{index}:" , paragraph)
+        print("\n-\n")
+
+    question_number = True
+    while question_number:
+        text_number = input("Enter a number btw. 1 and 3 to select:")
+
+        if text_number.isnumeric() and int(text_number) in range(1,4):
+            print("----------------------------------------")
+            break
+        else:
+            print("Warning you selected wrong number.") 
+            break
+user_choose_paragraph(TEXTS)
+
+"""
+def user_choose_paragraph(TEXTS):
+    for index, paragraph in enumerate(TEXTS, start=1):
+        print(f"{index}:" , paragraph)
+        print("\n-\n")
+
+user_choose_paragraph(TEXTS)
+
+
+NAPOJIT 5 ČÁST NA VYBRANI TEXTU PŘES FCE
 """
 
-for index, paragraph in enumerate(TEXTS, start=1):
-    print(f"{index}:" , paragraph)
-    print("\n-\n")
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
     
-    
+
+
     
    
 
