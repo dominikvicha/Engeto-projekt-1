@@ -107,53 +107,9 @@ registred_users = {
     "mike": "password123",
     "Liz": "pass123"
 }
-"""
-username = input("Username: ")
-password = input("Password: ")
 
-if username in registred_users and registred_users[username] == password:
-    print("ok")
-else:
-    print("not ok")
-
-"""
-
-"""
-def check_registration_user(username):
-
-    username = input("Username: ")
-    
-    if username in registred_users:
-            print("ok")
-    else:
-        print("sorry")
-    return(username)
-
-check_registration_user(registred_users)
-
-"""
-#print(dir(dict))
-#print(help(dict.values))
-#print(dict.values(registred_users))
-
-"""
-def check_registration_password(password):
-     
-    password = input("Password: ")
-
-    if password in dict.values(registred_users):
-        
-        print("ok")
-    else:
-        print("not ok")
-    return(password)
-
-check_registration_password(registred_users)
-
-"""
 #ošetřit když je dobre jmeno ale ne heslo (neni ani tak dulezite)
 ###################POKUD SE STANE ZE DOJDE KE SPATNEMU HESLU, PROGRAM SICE NAPISE ZE USER NENI REGISTROVANY ALE NESKONCI PROGRAM! 
-
 """
 def check_registration(username, password):
 # ukonceni programu pres while true? 
@@ -162,80 +118,68 @@ def check_registration(username, password):
     password = input("Enter a password:")
 
     if username in registred_users and password in dict.values(registred_users):
-        print("Welcome in the app,", username)
+        print(f"\nWelcome in the app,", username)
+        print(f"\nWe have 3 texts to be analyzed.") #vsechno napsat do jednoho printu i s ----- 
     else:
         print("Unregistered user, terminating the program..")
     
     return(username, password)
 check_registration(registred_users, dict.values(registred_users))
 
-"""
-# DVĚ MOŽNOSTI ŘEŠENÍ 5. -> 1. řešení
-"""
-try:
 
-    text_number = int(input("Enter a number btw. 1 and 3 to select:"))
-
-    if text_number < 4 and text_number > 0:
-        print("----------------------------------------")
-    else: 
-        print("Warning you selected wrong number.")
-
-except ValueError:
-    print("You must select number.")
-
-"""
-# MOŽNOST ŘEŠENÍ 5. -> 2. ŘEŠENÍ 
 
 def user_choose_paragraph(TEXTS):
     for index, paragraph in enumerate(TEXTS, start=1):
-        print(f"{index}:" , paragraph)
-        print("\n-\n")
+        print(f"\n{index}:" , paragraph)
+        print("\n")
 
-    question_number = True          # user_choice je urcite lepsi... 
-    while question_number:
-        text_number = input("Enter a number btw. 1 and 3 to select:")
-
-        if text_number.isnumeric() and int(text_number) in range(1,4):
-            print("----------------------------------------")
-            break
+    try: 
+        user_choice = int(input("Enter a number btw. 1 and 3 to select:"))
+        if 1 <= user_choice <= len(TEXTS):
+            print(f"\n---------------------")
+            print(TEXTS[user_choice -1])
         else:
-            print("Warning you selected wrong number.") 
-            break
-user_choose_paragraph(TEXTS)
-
-"""
-def user_choose_paragraph(TEXTS):
-    for index, paragraph in enumerate(TEXTS, start=1):
-        print(f"{index}:" , paragraph)
-        print("\n-\n")
-
-user_choose_paragraph(TEXTS)
-
-
-NAPOJIT 5 ČÁST NA VYBRANI TEXTU PŘES FCE
-"""
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-    
-
-
-    
+            print("Warning you selected wrong number.")
+    except ValueError:
+        print("Invalid input.")
    
+user_choose_paragraph(TEXTS)
+
+"""
+
+
+
+# zkouska pocitani jednotlivych zadani 
+
+paragraph1 = '''
+Situated about 10 miles west of Kemmerer,
+Fossil Butte is a ruggedly impressive
+topographic feature that rises sharply
+some 1000 feet above Twin Creek Valley
+to an elevation of more than 7500 feet
+above sea level. The butte is located just
+north of US 30N and the Union Pacific Railroad,
+which traverse the valley.
+'''
+
+# POCET SLOV
+words = paragraph1.split()
+words_count = len(words)
+
+print("Number of words is: " , words_count)
+
+# TITLECASE WORDS
+
+
+
+
+# UPPERCASE WORDS
+
+
+
+# LOWERCASE WORDS
+
+
 
 
 
