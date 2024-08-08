@@ -163,10 +163,66 @@ which traverse the valley.
 '''
 
 # POCET SLOV
-words = paragraph1.split()
-words_count = len(words)
 
-print("Number of words is: " , words_count)
+
+
+# str.istitle
+#str.isupper
+#.lower
+#.startwith
+#.strip
+
+
+
+
+words = paragraph1.split()
+
+titlecase_count = 0
+uppercase_count = 0
+lowercase_count = 0
+numeric_string = 0
+sum_numbers = 0
+
+for word in words: 
+    stripped_word = word.strip(",.").strip()
+
+    if stripped_word.istitle():
+        titlecase_count += 1
+
+    if stripped_word.isupper():
+        uppercase_count += 1
+
+    if stripped_word.islower():
+        lowercase_count += 1
+    
+    if stripped_word.isdigit():
+        numeric_string += 1
+        sum_numbers += int(stripped_word)
+
+print(f"Titlecase words: {titlecase_count}")
+print(f"Upercase words: {uppercase_count}")
+print(f"Lowercase: {lowercase_count}")
+print(f"Numeric srings: {numeric_string}")
+print(f"Sum of all numbers: {sum_numbers}")
+
+
+
+    
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
 
 # TITLECASE WORDS
 
