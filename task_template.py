@@ -158,9 +158,47 @@ The use of print(texts[choice - 1]) is a necessary adjustment to account for the
 """
 
 
-print(dir(TEXTS))
+#print(dir(TEXTS))
 # There are 54 words in the selected text.
 
-for words in TEXTS:
-    print(str(words.count[1]))
+# Given paragraph
+paragraph1 = '''
+Situated about 10 miles west of Kemmerer,
+Fossil Butte is a ruggedly impressive
+topographic feature that rises sharply
+some 1000 feet above Twin Creek Valley
+to an elevation of more than 7500 feet
+above sea level. The butte is located just
+north of US 30N and the Union Pacific Railroad,
+which traverse the valley.
+'''
+
+# Step 1: Split the paragraph into words
+words = paragraph1.split()
+
+# Step 2: Initialize counters and sum
+titlecase_count = 0
+numeric_strings_count = 0
+sum_of_numbers = 0
+
+# Step 3: Iterate through each word
+for word in words:
+    # Remove punctuation from the word
+    stripped_word = word.strip(",.")
+    
+    # Check if the word is titlecase
+    if stripped_word.istitle():
+        titlecase_count += 1
+    
+    # Check if the word is numeric
+    if stripped_word.isdigit():
+        numeric_strings_count += 1
+        sum_of_numbers += int(stripped_word)
+
+# Step 4: Print the results
+print(f"Titlecase words count: {titlecase_count}")
+print(f"Numeric strings count: {numeric_strings_count}")
+print(f"Sum of all numbers: {sum_of_numbers}")
+
+
     
