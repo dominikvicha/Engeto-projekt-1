@@ -126,7 +126,7 @@ def check_registration(username, password):
     return(username, password)
 check_registration(registred_users, dict.values(registred_users))
 
-
+"""
 
 def user_choose_paragraph(TEXTS):
     for index, paragraph in enumerate(TEXTS, start=1):
@@ -145,8 +145,6 @@ def user_choose_paragraph(TEXTS):
    
 user_choose_paragraph(TEXTS)
 
-"""
-
 
 
 # zkouska pocitani jednotlivych zadani 
@@ -162,21 +160,10 @@ north of US 30N and the Union Pacific Railroad,
 which traverse the valley.
 '''
 
-# POCET SLOV
-
-
-
-# str.istitle
-#str.isupper
-#.lower
-#.startwith
-#.strip
-
-
-
-
+"""
 words = paragraph1.split()
 
+word_count = 0
 titlecase_count = 0
 uppercase_count = 0
 lowercase_count = 0
@@ -185,6 +172,9 @@ sum_numbers = 0
 
 for word in words: 
     stripped_word = word.strip(",.").strip()
+
+    if stripped_word.__len__():
+        word_count += 1
 
     if stripped_word.istitle():
         titlecase_count += 1
@@ -199,12 +189,14 @@ for word in words:
         numeric_string += 1
         sum_numbers += int(stripped_word)
 
+print(f"Words: {word_count}")
 print(f"Titlecase words: {titlecase_count}")
 print(f"Upercase words: {uppercase_count}")
 print(f"Lowercase: {lowercase_count}")
 print(f"Numeric srings: {numeric_string}")
 print(f"Sum of all numbers: {sum_numbers}")
 
+"""
 
 
     
