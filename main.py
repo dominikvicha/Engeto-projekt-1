@@ -127,7 +127,7 @@ def check_registration(username, password):
 check_registration(registred_users, dict.values(registred_users))
 
 """
-
+"""
 def user_choose_paragraph(TEXTS):
     for index, paragraph in enumerate(TEXTS, start=1):
         print(f"\n{index}:" , paragraph)
@@ -145,6 +145,8 @@ def user_choose_paragraph(TEXTS):
    
 user_choose_paragraph(TEXTS)
 
+"""
+
 
 
 # zkouska pocitani jednotlivych zadani 
@@ -160,7 +162,7 @@ north of US 30N and the Union Pacific Railroad,
 which traverse the valley.
 '''
 
-"""
+
 words = paragraph1.split()
 
 word_count = 0
@@ -196,7 +198,28 @@ print(f"Lowercase: {lowercase_count}")
 print(f"Numeric srings: {numeric_string}")
 print(f"Sum of all numbers: {sum_numbers}")
 
-"""
+
+word_frequency = {}
+
+for word in words: 
+
+    if stripped_word in word_frequency:
+        word_frequency[stripped_word] += 1
+    else:
+        word_frequency[stripped_word] = 1
+        
+data = []
+
+for index, (word, frequency) in enumerate(word_frequency.items(), start=1):
+    length = word_count
+    data.append((length, frequency, index))
+
+
+print(f"{'LEN|':<10} {'OCCURENCES':<15} {'|NR.':<10}")
+print("-" * 30)
+for length, frequency, index in data:
+    print(f"{'length|':<10} {'frequency':<15} {'index.':<10}")
+
 
 
     
