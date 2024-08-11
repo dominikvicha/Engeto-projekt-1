@@ -136,7 +136,7 @@ def user_choose_paragraph(TEXTS):
     try: 
         user_choice = int(input("Enter a number btw. 1 and 3 to select:"))
         if 1 <= user_choice <= len(TEXTS):
-            print(f"\n---------------------")
+            print("-" * 30)
             print(TEXTS[user_choice -1])
         else:
             print("Warning you selected wrong number.")
@@ -172,6 +172,8 @@ lowercase_count = 0
 numeric_string = 0
 sum_numbers = 0
 
+word_frequency = {}
+
 for word in words: 
     stripped_word = word.strip(",.").strip()
 
@@ -191,34 +193,34 @@ for word in words:
         numeric_string += 1
         sum_numbers += int(stripped_word)
 
+    if stripped_word in word_frequency:
+        word_frequency[stripped_word] += 1
+    else:
+        word_frequency[stripped_word] = 1
+
+
 print(f"Words: {word_count}")
 print(f"Titlecase words: {titlecase_count}")
 print(f"Upercase words: {uppercase_count}")
 print(f"Lowercase: {lowercase_count}")
 print(f"Numeric srings: {numeric_string}")
 print(f"Sum of all numbers: {sum_numbers}")
+print("-" * 35)
 
 
-word_frequency = {}
-
-for word in words: 
-
-    if stripped_word in word_frequency:
-        word_frequency[stripped_word] += 1
-    else:
-        word_frequency[stripped_word] = 1
-        
 data = []
 
 for index, (word, frequency) in enumerate(word_frequency.items(), start=1):
-    length = word_count
+    length = len(word)
     data.append((length, frequency, index))
 
-
 print(f"{'LEN|':<10} {'OCCURENCES':<15} {'|NR.':<10}")
-print("-" * 30)
+print("-" * 35)
 for length, frequency, index in data:
-    print(f"{'length|':<10} {'frequency':<15} {'index.':<10}")
+    print(f"{length:<10} {frequency:<15} {index:<10}")
+
+
+
 
 
 
@@ -239,16 +241,6 @@ for length, frequency, index in data:
 
 
 
-# TITLECASE WORDS
-
-
-
-
-# UPPERCASE WORDS
-
-
-
-# LOWERCASE WORDS
 
 
 
