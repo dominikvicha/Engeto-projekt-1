@@ -173,32 +173,73 @@ north of US 30N and the Union Pacific Railroad,
 which traverse the valley.
 '''
 
-# Step 1: Split the paragraph into words
+
 words = paragraph1.split()
 
-# Step 2: Initialize counters and sum
+word_count = 0
 titlecase_count = 0
 numeric_strings_count = 0
 sum_of_numbers = 0
 
-# Step 3: Iterate through each word
 for word in words:
-    # Remove punctuation from the word
+   
     stripped_word = word.strip(",.")
     
-    # Check if the word is titlecase
+    if stripped_word.__len__():
+        word_count += 1
+    
     if stripped_word.istitle():
         titlecase_count += 1
     
-    # Check if the word is numeric
+    
     if stripped_word.isdigit():
         numeric_strings_count += 1
         sum_of_numbers += int(stripped_word)
 
-# Step 4: Print the results
+
+print(f"Words: {word_count}")
 print(f"Titlecase words count: {titlecase_count}")
 print(f"Numeric strings count: {numeric_strings_count}")
 print(f"Sum of all numbers: {sum_of_numbers}")
 
 
+# Step 2: Clean up words (remove punctuation) and calculate frequencies
+word_frequencies = {}
+
+for word in words:
+    # Strip punctuation from the word and convert to lowercase for consistent counting
+    cleaned_word = word.strip(",.").lower()
+    
+    if cleaned_word in word_frequencies:
+        word_frequencies[cleaned_word] += 1
+    else:
+        word_frequencies[cleaned_word] = 1
+
+# Step 3: Prepare data for the columnar graph
+data = []
+
+for index, (word, frequency) in enumerate(word_frequencies.items(), start=1):
+    length = len(word)
+    data.append((length, frequency, index))
+
+# Step 4: Display the data in a columnar format
+print(f"{'LEN':<5} {'OCCURENCES':<12} {'NR.':<5}")
+print("-" * 30)
+for length, frequency, index in data:
+    print(f"{length:<5} {frequency:<12} {index:<5}")
+
+
+
+    
+
+
+
+
+
+
+
+"""
+
+
+"""
     
