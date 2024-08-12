@@ -110,7 +110,7 @@ registred_users = {
 
 #ošetřit když je dobre jmeno ale ne heslo (neni ani tak dulezite)
 ###################POKUD SE STANE ZE DOJDE KE SPATNEMU HESLU, PROGRAM SICE NAPISE ZE USER NENI REGISTROVANY ALE NESKONCI PROGRAM! 
-"""
+
 def check_registration(username, password):
 # ukonceni programu pres while true? 
 
@@ -126,8 +126,7 @@ def check_registration(username, password):
     return(username, password)
 check_registration(registred_users, dict.values(registred_users))
 
-"""
-"""
+
 def user_choose_paragraph(TEXTS):
     for index, paragraph in enumerate(TEXTS, start=1):
         print(f"\n{index}:" , paragraph)
@@ -144,9 +143,6 @@ def user_choose_paragraph(TEXTS):
         print("Invalid input.")
    
 user_choose_paragraph(TEXTS)
-
-"""
-
 
 
 # zkouska pocitani jednotlivych zadani 
