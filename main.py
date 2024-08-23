@@ -101,7 +101,7 @@ in modern oceans. Other fish such as paddlefish,
 garpike and stingray are also present.'''
 ]
 
-registred_users = {
+registered_users = {
     "bob": "123",
     "ann": "pass123",
     "mike": "password123",
@@ -110,11 +110,10 @@ registred_users = {
 
 def check_registration():
 
-
     username = input("Enter a username:")
     password = input("Enter a password:")
 
-    if username in registred_users and password == registred_users.get(username):
+    if username in registered_users and password == registered_users.get(username):
         print(f"\nWelcome in the app,", username)
         print(f"\nWe have 3 texts to be analyzed.") 
     else:
@@ -122,18 +121,12 @@ def check_registration():
         exit()
     
 
-
 def user_choose_paragraph():
-    #for index, paragraph in enumerate(TEXTS, start=1):
-        #print(f"\n{index}:" , paragraph)
-        #print("\n")
 
     try: 
         user_choice = int(input("Enter a number btw. 1 and 3 to select:"))
         if not 1 <= user_choice <= len(TEXTS):
-            #print("-" * 30)
-            #print(TEXTS[user_choice -1])
-            raise ValueError("You selected wring number.")
+            raise ValueError("You selected wrong number.")
         
     except ValueError as e:
         print(e)
@@ -192,21 +185,21 @@ def stats_count(paragraph):
     return words
 
 def graph(words):
-    print(f"LEN|OCCURRENCES|NR.")
+    print(f"{'LEN':<5}|{'OCCURRENCES':<20}|{'NR.':<5}")
     print("-" * 35)
 
-    for i in range(1, 30):
+    for i in range(1, 20):
         stats = 0 
         for word in words:
             if len(word) == i:
                 stats += 1
         graph_stats = str(stats * "*")
-        print(f"{i:<5}|{str(graph_stats):<{10}}|{stats}")
+        print(f"{i:<5}|{str(graph_stats):<{20}}|{stats}")
 
 
 def main():
     check_registration()
-    paragraph = TEXTS[user_choose_paragraph()-1]
+    paragraph = TEXTS[user_choose_paragraph() - 1]
     words = stats_count(paragraph)
     graph(words)
 
