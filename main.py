@@ -108,112 +108,111 @@ registred_users = {
     "Liz": "pass123"
 }
 
-#ošetřit když je dobre jmeno ale ne heslo (neni ani tak dulezite)
-###################POKUD SE STANE ZE DOJDE KE SPATNEMU HESLU, PROGRAM SICE NAPISE ZE USER NENI REGISTROVANY ALE NESKONCI PROGRAM! 
+def check_registration():
 
-def check_registration(username, password):
-# ukonceni programu pres while true? 
 
     username = input("Enter a username:")
     password = input("Enter a password:")
 
-    if username in registred_users and password in dict.values(registred_users):
+    if username in registred_users and password == registred_users.get(username):
         print(f"\nWelcome in the app,", username)
-        print(f"\nWe have 3 texts to be analyzed.") #vsechno napsat do jednoho printu i s ----- 
+        print(f"\nWe have 3 texts to be analyzed.") 
     else:
         print("Unregistered user, terminating the program..")
+        exit()
     
-    return(username, password)
-check_registration(registred_users, dict.values(registred_users))
 
 
-def user_choose_paragraph(TEXTS):
-    for index, paragraph in enumerate(TEXTS, start=1):
-        print(f"\n{index}:" , paragraph)
-        print("\n")
+def user_choose_paragraph():
+    #for index, paragraph in enumerate(TEXTS, start=1):
+        #print(f"\n{index}:" , paragraph)
+        #print("\n")
 
     try: 
         user_choice = int(input("Enter a number btw. 1 and 3 to select:"))
-        if 1 <= user_choice <= len(TEXTS):
-            print("-" * 30)
-            print(TEXTS[user_choice -1])
-        else:
-            print("Warning you selected wrong number.")
-    except ValueError:
-        print("Invalid input.")
+        if not 1 <= user_choice <= len(TEXTS):
+            #print("-" * 30)
+            #print(TEXTS[user_choice -1])
+            raise ValueError("You selected wring number.")
+        
+    except ValueError as e:
+        print(e)
+        exit()
    
-user_choose_paragraph(TEXTS)
+    return user_choice
 
 
-# zkouska pocitani jednotlivych zadani 
+def stats_count(paragraph):
 
-paragraph1 = '''
-Situated about 10 miles west of Kemmerer,
-Fossil Butte is a ruggedly impressive
-topographic feature that rises sharply
-some 1000 feet above Twin Creek Valley
-to an elevation of more than 7500 feet
-above sea level. The butte is located just
-north of US 30N and the Union Pacific Railroad,
-which traverse the valley.
-'''
+    word_count = 0
+    titlecase_count = 0
+    uppercase_count = 0
+    lowercase_count = 0
+    numeric_string = 0
+    sum_numbers = 0
 
+    word_frequency = {}
 
-words = paragraph1.split()
+    words = paragraph.split()
+    symbols = ("().,?!-%*/")
 
-word_count = 0
-titlecase_count = 0
-uppercase_count = 0
-lowercase_count = 0
-numeric_string = 0
-sum_numbers = 0
+    for word in words: 
+        stripped_word = word.strip(symbols).strip()
 
-word_frequency = {}
+        if stripped_word.__len__():
+            word_count += 1
 
-for word in words: 
-    stripped_word = word.strip(",.").strip()
+        if stripped_word.istitle():
+            titlecase_count += 1
 
-    if stripped_word.__len__():
-        word_count += 1
+        if stripped_word.isupper():
+            uppercase_count += 1
 
-    if stripped_word.istitle():
-        titlecase_count += 1
+        if stripped_word.islower():
+            lowercase_count += 1
+        
+        if stripped_word.isdigit():
+            numeric_string += 1
+            sum_numbers += int(stripped_word)
 
-    if stripped_word.isupper():
-        uppercase_count += 1
-
-    if stripped_word.islower():
-        lowercase_count += 1
-    
-    if stripped_word.isdigit():
-        numeric_string += 1
-        sum_numbers += int(stripped_word)
-
-    if stripped_word in word_frequency:
-        word_frequency[stripped_word] += 1
-    else:
-        word_frequency[stripped_word] = 1
+        if stripped_word in word_frequency:
+            word_frequency[stripped_word] += 1
+        else:
+            word_frequency[stripped_word] = 1
 
 
-print(f"Words: {word_count}")
-print(f"Titlecase words: {titlecase_count}")
-print(f"Upercase words: {uppercase_count}")
-print(f"Lowercase: {lowercase_count}")
-print(f"Numeric srings: {numeric_string}")
-print(f"Sum of all numbers: {sum_numbers}")
-print("-" * 35)
+    print(f"Words: {word_count}")
+    print(f"Titlecase words: {titlecase_count}")
+    print(f"Upercase words: {uppercase_count}")
+    print(f"Lowercase: {lowercase_count}")
+    print(f"Numeric srings: {numeric_string}")
+    print(f"Sum of all numbers: {sum_numbers}")
+    print("-" * 35)
+
+    return words
+
+def graph(words):
+    print(f"LEN|OCCURRENCES|NR.")
+    print("-" * 35)
+
+    for i in range(1, 30):
+        stats = 0 
+        for word in words:
+            if len(word) == i:
+                stats += 1
+        graph_stats = str(stats * "*")
+        print(f"{i:<5}|{str(graph_stats):<{10}}|{stats}")
 
 
-data = []
+def main():
+    check_registration()
+    paragraph = TEXTS[user_choose_paragraph()-1]
+    words = stats_count(paragraph)
+    graph(words)
 
-for index, (word, frequency) in enumerate(word_frequency.items(), start=1):
-    length = len(word)
-    data.append((length, frequency, index))
+if __name__ == "__main__":
+    main()
 
-print(f"{'LEN|':<10} {'OCCURENCES':<15} {'|NR.':<10}")
-print("-" * 35)
-for length, frequency, index in data:
-    print(f"{length:<10} {frequency:<15} {index:<10}")
 
 
 
