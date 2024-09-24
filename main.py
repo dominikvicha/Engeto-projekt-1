@@ -158,7 +158,7 @@ def stats_count(paragraph):
         if stripped_word.istitle():
             titlecase_count += 1
 
-        if stripped_word.isupper():
+        if stripped_word.isupper() and stripped_word.isalpha():
             uppercase_count += 1
 
         if stripped_word.islower():
