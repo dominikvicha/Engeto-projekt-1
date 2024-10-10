@@ -186,7 +186,7 @@ def stats_count(paragraph):
     return stripped_words
 
 def graph(words):
-    print(f"{'LEN':<5}|{'OCCURRENCES':<10}|{'NR.':<5}")
+    print(f"{'LEN':<5}|{'OCCURRENCES':^20}|{'NR.':<5}")
     print("-" * 35)
 
     for i in range(1, 20):
