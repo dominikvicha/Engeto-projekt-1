@@ -145,7 +145,7 @@ def stats_count(paragraph):
     sum_numbers = 0
 
     word_frequency = {}
-
+    paragraph = paragraph.replace("-", " ")
     words = paragraph.split()
     symbols = ("().,?!-%*/")
 
@@ -173,7 +173,7 @@ def stats_count(paragraph):
             word_frequency[word] += 1
         else:
             word_frequency[word] = 1
-
+    print(stripped_words)
 
     print(f"Words: {word_count}")
     print(f"Titlecase words: {titlecase_count}")
