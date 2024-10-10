@@ -149,29 +149,30 @@ def stats_count(paragraph):
     words = paragraph.split()
     symbols = ("().,?!-%*/")
 
-    for word in words: 
-        stripped_word = word.strip(symbols).strip()
+    stripped_words = [(word.strip(symbols)) for word in words]
 
-        if stripped_word.__len__():
+    for word in stripped_words: 
+
+        if word.__len__():
             word_count += 1
 
-        if stripped_word.istitle():
+        if word.istitle():
             titlecase_count += 1
 
-        if stripped_word.isupper() and stripped_word.isalpha():
+        if word.isupper() and word.isalpha():
             uppercase_count += 1
 
-        if stripped_word.islower():
+        if word.islower():
             lowercase_count += 1
         
-        if stripped_word.isdigit():
+        if word.isdigit():
             numeric_string += 1
-            sum_numbers += int(stripped_word)
+            sum_numbers += int(word)
 
-        if stripped_word in word_frequency:
-            word_frequency[stripped_word] += 1
+        if word in word_frequency:
+            word_frequency[word] += 1
         else:
-            word_frequency[stripped_word] = 1
+            word_frequency[word] = 1
 
 
     print(f"Words: {word_count}")
@@ -182,10 +183,10 @@ def stats_count(paragraph):
     print(f"Sum of all numbers: {sum_numbers}")
     print("-" * 35)
 
-    return words
+    return stripped_words
 
 def graph(words):
-    print(f"{'LEN':<5}|{'OCCURRENCES':<20}|{'NR.':<5}")
+    print(f"{'LEN':<5}|{'OCCURRENCES':<10}|{'NR.':<5}")
     print("-" * 35)
 
     for i in range(1, 20):
@@ -195,7 +196,6 @@ def graph(words):
                 stats += 1
         graph_stats = str(stats * "*")
         print(f"{i:<5}|{str(graph_stats):<{20}}|{stats}")
-
 
 def main():
     check_registration()
